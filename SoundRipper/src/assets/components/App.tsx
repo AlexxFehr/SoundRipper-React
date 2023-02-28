@@ -3,7 +3,7 @@ import { useState } from 'react'
 import InputCard from './InputCard'
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import "./InputCard.css"
+import "../css/InputCard.css"
 
 
 
