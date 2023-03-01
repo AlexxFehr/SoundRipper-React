@@ -4,6 +4,20 @@ import Button from "react-bootstrap/Button"
 
 export default function InputCard(){
 
+    const [formData, setFormData] = React.useState({
+        link : "",
+        format : "" 
+    });
+
+    function handleFormChange(){
+        //TODO Update data in form to state
+        //TODO Validate the current YT link
+    }
+
+    function handleSubmit(){
+        //TOOD Handle form submit
+    }
+
     return (
         <div className="input-card">
             <div className="input-group">
@@ -30,12 +44,8 @@ export default function InputCard(){
                 </select>
             </div>
             <div className="download-button">
-                <Button>Download</Button>
+                <Button onClick={handleSubmit}>Download</Button>
             </div>
         </div>
     )
-}
-
-function handleSubmit(){
-    //TOOD Handle form submit
 }
