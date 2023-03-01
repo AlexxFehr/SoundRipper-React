@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, SyntheticEvent } from "react";
 import Button from "react-bootstrap/Button"
 
 import getYTVideoID from "../ts/getYTVideoID";
@@ -11,7 +11,7 @@ export default function InputCard(){
         format : "" 
     });
 
-    function handleFormChange(event){
+    function handleFormChange(event: any){
         //TODO Validate the current YT link
 
         setFormData((pFormData) => {
