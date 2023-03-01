@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button"
 
+import getYTVideoID from "../ts/getYTVideoID";
+
 
 export default function InputCard(){
 
@@ -13,7 +15,6 @@ export default function InputCard(){
         //TODO Validate the current YT link
 
         setFormData((pFormData) => {
-
             return {
                 ...pFormData,
                 [event.target.name] : event.target.value
@@ -21,9 +22,27 @@ export default function InputCard(){
         });
     }
 
-    function handleSubmit(){
-        //TOOD Handle form submit
-        console.log(formData);
+    async function handleSubmit(){
+
+        const link : string = formData.link;
+        const format : string = formData.format;
+
+        console.log(link);
+        //Send post request and await reponse
+        //TODO Save response with link and use to GET
+        await fetch("http://localhost:8080/download", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            link: link,
+            quality: format,
+            }),
+        });
+
+        //Download file
+        location.href = "http://localhost:8080/download?id=" + getYTVideoID(link);
     }
 
     return (
