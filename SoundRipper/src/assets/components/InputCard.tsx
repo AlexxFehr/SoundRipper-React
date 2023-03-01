@@ -9,21 +9,29 @@ export default function InputCard(){
         format : "" 
     });
 
-    function handleFormChange(){
-        //TODO Update data in form to state
+    function handleFormChange(event){
         //TODO Validate the current YT link
+
+        setFormData((pFormData) => {
+
+            return {
+                ...pFormData,
+                [event.target.name] : event.target.value
+            };
+        });
     }
 
     function handleSubmit(){
         //TOOD Handle form submit
+        console.log(formData);
     }
 
     return (
         <div className="input-card">
             <div className="input-group">
-                <input type="text" aria-label="First name" placeholder="Link" className="form-control"/>
+                <input type="text" placeholder="Link" className="form-control" name="link" onChange={handleFormChange}/>
 
-                <select className="form-select" aria-label="Default select example">
+                <select className="form-select" aria-label="Default select example" name="format" onChange={handleFormChange}>
                     <optgroup label="Audio Interchange File">
                         <option value=".aif - 32k">.aif - 32k</option>
                         <option value=".aif - 64k">.aif - 64k</option>
